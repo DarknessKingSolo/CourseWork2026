@@ -1,0 +1,19 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\CYRO \CYRB \CYRO \CYRZ \CYRN \CYRA \CYRCH \CYRE \CYRN \CYRI \CYRYA \ \CYRI \ \CYRS \CYRO \CYRK \CYRR \CYRA \CYRSHCH \CYRE \CYRN \CYRI \CYRYA }{3}{section*.1}%
+\contentsline {section}{\cyrillictext \CYRV \CYRV \CYRE \CYRD \CYRE \CYRN \CYRI \CYRE }{4}{section*.2}%
+\contentsline {section}{\numberline {1}Теоретические принципы сокращения разрядности параметров в глубоких нейронных сетях}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Математическая формализация процесса квантования и анализ типов ошибок дискретизации}{7}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Гранулярность квантования и её влияние на точность}{9}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Продвинутые методы квантования}{10}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Аппаратная поддержка квантования}{11}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Вычислительный анализ и экспериментальное сравнение методов INT8, INT4 и NF4}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Обзор существующих экспериментальных результатов и методология сравнительного анализа}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Результаты квантования для INT8 и INT4 методов}{12}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Метод NF4 и его особенности}{14}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Сравнительный анализ методов на моделях разного масштаба}{14}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Анализ влияния низкой разрядности на качество генерации}{15}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Влияние квантования на способность к рассуждениям}{17}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Выводы и рекомендации по выбору метода квантования}{18}{subsection.2.7}%
+\contentsline {section}{\cyrillictext \CYRZ \CYRA \CYRK \CYRL \CYRYU \CYRCH \CYRE \CYRN \CYRI \CYRE }{21}{section*.13}%
+\contentsline {section}{\cyrillictext \CYRS \CYRP \CYRI \CYRS \CYRO \CYRK \ \CYRI \CYRS \CYRP \CYRO \CYRL \CYRSFTSN \CYRZ \CYRO \CYRV \CYRA \CYRN \CYRN \CYRERY \CYRH \ \CYRI \CYRS \CYRT \CYRO \CYRCH \CYRN \CYRI \CYRK \CYRO \CYRV }{23}{section*.14}%
+\contentsfinish 
