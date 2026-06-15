@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  15 JUN 2026 14:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  15 JUN 2026 22:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -956,58 +956,46 @@ Underfull \hbox (badness 1097) in paragraph at lines 71--72
 
 ] [4
 
-]
-Underfull \hbox (badness 1577) in paragraph at lines 96--97
-[]\T2A/cmr/bx/n/14.4 Объектом ис-сле-до-ва-ния \T2A/cmr/m/n/14.4 вы-сту-па-ют б
-оль-шие язы-ко-вые мо-де-ли
- []
-
-[5] [6] [7
+] [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 []\T2A/cmr/m/n/14.4 Среднеквадратическая ошиб-ка кван-то-ва-ния (Mean Squared
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 []\T2A/cmr/m/n/14.4 Отношение сиг-нал/шум кван-то-ва-ния (Signal-to-Quantizatio
 n-Noise
  []
 
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
-[]\T2A/cmr/bx/n/14.4 Метод GPTQ (Generative Pre-trained Transformer
- []
+[6] [7] [8] [9] [10
 
-
-Underfull \hbox (badness 4752) in paragraph at lines 172--173
-\T2A/cmr/bx/n/14.4 Quantization) \T2A/cmr/m/n/14.4 спе-ци-а-ли-зи-ро-ван для кв
-ан-то-ва-ния боль-ших язы-ко-вых
- []
-
-[10] [11] [12
-
-] [13] [14] [15] [16]
-Overfull \hbox (9.40419pt too wide) in paragraph at lines 279--292
+] [11] [12] [13] [14]
+Overfull \hbox (9.40419pt too wide) in paragraph at lines 253--266
  [][] 
  []
 
-[17] [18]
-Underfull \hbox (badness 1661) in paragraph at lines 397--397
+[15] [16]
+Overfull \hbox (107.44553pt too wide) in paragraph at lines 317--330
+ [][] 
+ []
+
+
+Underfull \hbox (badness 1661) in paragraph at lines 371--371
 []|\T2A/cmr/m/n/10 Ограниченное обо-ру-до-ва-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--401
+Underfull \hbox (badness 10000) in paragraph at lines 375--375
 []|\T2A/cmr/m/n/10 Длинные кон-тек-сты
  []
 
-[19] [20] [21
+[17] [18] [19
 
-] [22]
+] [20]
 LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
-444.
+406.
 
 (C:\Users\sokol\OneDrive\Desktop\mik\tex/latex/cyrillic\t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
@@ -1017,43 +1005,48 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 1107) in paragraph at lines 444--445
-[]\T2A/cmr/m/n/14.4 Dettmers, T., Lewis, M., Belkada, Y., Zettlemoyer, L. LLM.i
-nt8(): 8-
+Underfull \hbox (badness 1147) in paragraph at lines 416--417
+[]\T2A/cmr/m/n/14.4 Frantar, E., Ashkboos, S., Hoefler, T., Alistarh, D. GPTQ: 
+Accurate
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 452--453
-\T2A/cmr/m/n/14.4 Large Language Models with Microscaling Formats // arXiv prep
-rint
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 458--459
+Underfull \hbox (badness 2302) in paragraph at lines 420--421
 []\T2A/cmr/m/n/14.4 Zhang, Y., Lu, L., Zhao, R., et al. An efficient quantized 
 GEMV
  []
 
+[21
 
-Underfull \hbox (badness 1057) in paragraph at lines 462--463
+]
+Underfull \hbox (badness 1062) in paragraph at lines 422--423
+\T2A/cmtt/m/n/14.4 ieeexplore . ieee . org / abstract / document / 10899941$[] 
+\T2A/cmr/m/n/14.4 (да-та об-ра-ще-ния:
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 424--425
 []\T2A/cmr/m/n/14.4 Mekala, A., Atmakuru, A., Song, Y., Karpinska, M., Iyyer, M
 . Does
  []
 
 
-Underfull \hbox (badness 6220) in paragraph at lines 462--463
-\T2A/cmr/m/n/14.4 quantization affect models' performance on long-context tasks
-? //
+Underfull \hbox (badness 1838) in paragraph at lines 424--425
+\T2A/cmr/m/n/14.4 of EMNLP 2025. -- 2025. -- URL: []$\T2A/cmtt/m/n/14.4 https :
+ / / aclanthology . org / 2025 .
  []
 
-[23
 
-]
+Underfull \hbox (badness 1297) in paragraph at lines 428--429
+\T2A/cmr/m/n/14.4 quantization method [Текст] / Y. Guan, Y. Cui, L. Zhao et al.
+ //
+ []
+
 
 Package caption Warning: Unused \captionsetup[figure] on input line 16.
 See the caption package documentation for explanation.
 
-[24] (coursework.aux)
+[22] (coursework.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -1062,13 +1055,13 @@ Package rerunfilecheck Info: File `coursework.out' has not changed.
 (rerunfilecheck)             Checksum: 2FFCA9DB868A0097B88F020DB91BC547;7206.
  ) 
 Here is how much of TeX's memory you used:
- 19741 strings out of 467691
- 315324 string characters out of 5419316
+ 19736 strings out of 467691
+ 315229 string characters out of 5419316
  961820 words of memory out of 5000000
- 48472 multiletter control sequences out of 15000+600000
+ 48469 multiletter control sequences out of 15000+600000
  639143 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1296b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,1308b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\sokol\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\latt14
 40.pk> <C:\Users\sokol\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\la
 rm1000.pk> <C:\Users\sokol\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi60
@@ -1082,9 +1075,9 @@ msfonts/cm/cmr10.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/am
 sfonts/cm/cmr12.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on coursework.pdf (24 pages, 323515 bytes).
+Output written on coursework.pdf (22 pages, 312086 bytes).
 PDF statistics:
- 768 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
+ 735 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
  6281 words of extra memory for PDF output out of 10000 (max. 10000000)
 
