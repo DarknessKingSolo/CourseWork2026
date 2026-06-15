@@ -381,6 +381,8 @@
 	
 	Данные таблицы 5 показывают, что NF4 даёт почти то же сжатие и скорость, что и INT4 GPTQ. Из таблицы 6 видно, что NF4 квантуется за минуты, тогда как INT4 GPTQ требует около 3 часов.
 	
+	\textbf{Важное уточнение по скорости NF4 и GPTQ.} В таблице 5 указано, что ускорение NF4 составляет 3.4x, а у INT4 GPTQ — 3.5x. Разница в 0.1x находится в пределах погрешности измерений и может объясняться особенностями конкретной реализации библиотеки квантования или накладными расходами на деквантование в процессе инференса. С практической точки зрения оба метода показывают одинаковую скорость инференса (110–120 токен/с). Ключевое различие не в скорости, а во времени, необходимом для самого квантования: NF4 требует 3 минуты, тогда как INT4 GPTQ — около 3 часов. Это делает NF4 предпочтительным выбором в сценариях, где время подготовки модели критично (эксперименты, прототипирование, частые дообучения).
+	
 	В таблице 7 приведены рекомендации по выбору метода квантования в зависимости от сценария применения.
 	
 	\begin{table}[!ht]
@@ -409,45 +411,59 @@
 	
 	\conclusion
 	
-	Проведённое исследование методов квантования больших языковых моделей INT8, INT4 и NF4 позволило систематизировать теоретические принципы сокращения разрядности параметров и провести комплексный сравнительный анализ влияния различных подходов на качество и эффективность моделей.
+	\textbf{Целью} курсовой работы было проведение сравнительного анализа методов квантования больших языковых моделей INT8, INT4 и NF4. Для достижения цели были поставлены и решены четыре задачи.
 	
-	В первой главе была разработана математическая формализация процесса квантования, включающая анализ типов ошибок дискретизации и их влияния на точность нейросетевых вычислений. Показано, что среднеквадратическая ошибка квантования квадратично зависит от шага квантования, а выбор параметров калибровки критически влияет на эффективность использования доступного диапазона представления.
+	\textbf{Задача 1: исследовать математические принципы квантования.} В первой главе формализован процесс квантования, описаны типы ошибок дискретизации, введены метрики MSQE и SQNR. Показано, что ошибка квантования квадратично зависит от шага квантования, а метод калибровки существенно влияет на сохранение точности.
 	
-	Сравнительная характеристика алгоритмов целочисленного сжатия выявила эволюцию подходов от простого симметричного квантования к сложным адаптивным методам, учитывающим локальные вариации распределения параметров. Поканальное и групповое квантование демонстрируют существенные преимущества по сравнению с послойными схемами благодаря адаптации к вариативности масштабов активаций различных нейронов. Метод GPTQ обеспечивает дополнительную оптимизацию путём компенсации ошибок квантования через корректировку взаимосвязанных параметров, что важно при агрессивном снижении разрядности до 4 бит.
+	\textbf{Задача 2: провести сравнительный анализ алгоритмов квантования.} Рассмотрены послойное, поканальное, групповое квантование, а также продвинутые методы — AdaRound, GPTQ и NF4. Показано, что поканальное и групповое квантование дают лучшую точность по сравнению с послойным, а метод GPTQ обеспечивает высокое качество 4-битного сжатия за счёт компенсации ошибок.
 	
-	Во второй главе проведён детальный анализ экспериментальных результатов применения методов INT8, INT4 и NF4 к современным языковым моделям семейства LLaMA различного масштаба. Систематизация данных из научных публикаций 2024–2026 годов демонстрирует, что INT8 квантование обеспечивает двукратное сжатие с незначительной деградацией качества менее 1\% по метрикам перплексии и точности на стандартных бенчмарках. Метод INT4 GPTQ достигает четырёхкратного сжатия при умеренной деградации качества около 2–3\%, что приемлемо для большинства практических применений. Метод NF4 демонстрирует сопоставимые с GPTQ характеристики при существенно меньших вычислительных затратах на процедуру квантования.
+	\textbf{Задача 3: систематизировать экспериментальные результаты.} На основе данных из научных статей (2022–2026) установлено:
+	\begin{itemize}
+		\item INT8 (поканально) — сжатие в 2 раза, деградация качества менее 1\%, время квантования 5 минут;
+		\item INT4 GPTQ — сжатие в 4 раза, деградация 1.7\%, время квантования 3 часа;
+		\item NF4 — сжатие в 4 раза, деградация 2.3\%, время квантования 3 минуты.
+	\end{itemize}
+	Скорость инференса INT4 GPTQ и NF4 практически одинакова (110–120 токен/с), что делает NF4 предпочтительным выбором при ограниченном времени на подготовку модели.
 	
-	Анализ влияния низкой разрядности на качество генерации выявил, что деградация качества неравномерно распределена по типам задач. Простые задачи классификации и генерации демонстрируют высокую робастность к квантованию, в то время как сложные задачи, требующие многошаговых рассуждений, показывают более существенное снижение точности при агрессивном сжатии. Обработка длинных контекстов характеризуется усиленной деградацией из-за накопления ошибок квантования через множество слоёв. Различные компоненты трансформерной архитектуры демонстрируют неодинаковую чувствительность к квантованию: проекционные матрицы механизма внимания наиболее критичны, в то время как feed-forward слои более робастны.
+	\textbf{Задача 4: сформулировать рекомендации по выбору метода.} В зависимости от сценария:
+	\begin{itemize}
+		\item \textbf{Продакшн с высокими требованиями к качеству} — INT8 поканальное.
+		\item \textbf{Ограниченное оборудование (6–8 ГБ GPU)} — INT4 GPTQ.
+		\item \textbf{Дообучение на своих данных, прототипирование} — NF4 + QLoRA (минуты против часов).
+		\item \textbf{Длинные контексты (>2048 токенов)} — INT8 (меньше накопления ошибок).
+	\end{itemize}
 	
-	Сформулированные рекомендации по выбору метода квантования учитывают множественные факторы: специфику целевой задачи, размер модели, доступные вычислительные ресурсы и допустимый уровень деградации качества. INT8 поканальное квантование рекомендуется в качестве базового подхода для продакшн-развертывания со строгими требованиями к качеству. INT4 GPTQ оптимален для развёртывания крупных моделей на устройствах с ограниченной памятью при приемлемой деградации качества. NF4 с QLoRA представляет наиболее эффективное решение для задач дообучения и адаптации моделей при минимальных требованиях к вычислительным ресурсам. Смешанное квантование с различной разрядностью для различных компонентов архитектуры обеспечивает оптимальный баланс между эффективностью и качеством для критичных применений.
+	\textbf{Ограничения работы.} Исследование основано на агрегированных данных из открытых источников, а не на собственных вычислительных экспериментах. Это связано с ограниченностью ресурсов (отсутствие доступа к кластеру GPU). Также не рассматривалось совместное квантование весов и активаций (W4A8 и подобные схемы).
 	
-	Практическая значимость исследования заключается в предоставлении систематизированных рекомендаций для разработчиков и исследователей, позволяющих осознанно выбирать метод квантования на основе специфических требований применения. Дальнейшие исследования могут быть направлены на разработку автоматизированных методов поиска оптимальной конфигурации квантования для конкретных архитектур и задач, а также на изучение комбинированных подходов к сжатию моделей, объединяющих квантование с другими техниками оптимизации, такими как pruning и knowledge distillation.
+	\textbf{Направления будущих исследований.} Автоматизированный подбор параметров квантования под конкретную архитектуру, комбинирование квантования с другими методами сжатия (прунинг, дистилляция), а также изучение влияния квантования на смещения и справедливость генерации.
+	
+	\textbf{Практическая значимость.} Полученные рекомендации могут использоваться разработчиками и исследователями при развёртывании LLM на устройствах с ограниченными ресурсами, а также при выборе метода квантования для дообучения моделей.
 	
 	\begin{thebibliography}{99}
 		
-		\bibitem{llmint8} Dettmers, T., Lewis, M., Belkada, Y., Zettlemoyer, L. LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale // arXiv preprint arXiv:2208.07339. -- 2022.
+		\bibitem{llmint8} Dettmers, T., Lewis, M., Belkada, Y., Zettlemoyer, L. LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale // arXiv preprint arXiv:2208.07339. -- 2022. URL: \url{https://arxiv.org/abs/2208.07339}
 		
-		\bibitem{awq} Lin, J., Tang, J., Yang, H., Li, Z., et al. AWQ: Activation-aware Weight Quantization for LLMs // arXiv preprint arXiv:2306.00978. -- 2023.
+		\bibitem{awq} Lin, J., Tang, J., Yang, H., Li, Z., et al. AWQ: Activation-aware Weight Quantization for LLMs // arXiv preprint arXiv:2306.00978. -- 2023. URL: \url{https://arxiv.org/abs/2306.00978}
 		
-		\bibitem{smoothquant} Xiao, G., Lin, J., Seznec, M., et al. SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models // arXiv preprint arXiv:2211.10438. -- 2023.
+		\bibitem{smoothquant} Xiao, G., Lin, J., Seznec, M., et al. SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models // arXiv preprint arXiv:2211.10438. -- 2023. URL: \url{https://arxiv.org/abs/2211.10438}
 		
-		\bibitem{nf4} Dettmers, T., Zettlemoyer, L. The case for 4-bit precision: k-bit Inference Scaling Laws // arXiv preprint arXiv:2212.09720. -- 2022.
+		\bibitem{nf4} Dettmers, T., Zettlemoyer, L. The case for 4-bit precision: k-bit Inference Scaling Laws // arXiv preprint arXiv:2212.09720. -- 2022. URL: \url{https://arxiv.org/abs/2212.09720}
 		
-		\bibitem{microscaling} Sharify, S., Saxena, U., Xu, Z., et al. Post Training Quantization of Large Language Models with Microscaling Formats // arXiv preprint arXiv:2405.07135. -- 2024.
+		\bibitem{microscaling} Sharify, S., Saxena, U., Xu, Z., et al. Post Training Quantization of Large Language Models with Microscaling Formats // arXiv preprint arXiv:2405.07135. -- 2024. URL: \url{https://arxiv.org/abs/2405.07135}
 		
-		\bibitem{gptq} Frantar, E., Ashkboos, S., Hoefler, T., Alistarh, D. GPTQ: Accurate Post-Training Quantization for Generative Pretrained Transformers // arXiv preprint arXiv:2210.17323. -- 2022.
+		\bibitem{gptq} Frantar, E., Ashkboos, S., Hoefler, T., Alistarh, D. GPTQ: Accurate Post-Training Quantization for Generative Pretrained Transformers // arXiv preprint arXiv:2210.17323. -- 2022. URL: \url{https://arxiv.org/abs/2210.17323}
 		
-		\bibitem{sparsegpt} Frantar, E., Alistarh, D. SparseGPT: Massive Language Models Can be Accurately Pruned in One-Shot // arXiv preprint arXiv:2301.00774. -- 2023.
+		\bibitem{sparsegpt} Frantar, E., Alistarh, D. SparseGPT: Massive Language Models Can be Accurately Pruned in One-Shot // arXiv preprint arXiv:2301.00774. -- 2023. URL: \url{https://arxiv.org/abs/2301.00774}
 		
-		\bibitem{gemv} Zhang, Y., Lu, L., Zhao, R., et al. An efficient quantized GEMV implementation for large language models inference with matrix core // Springer. -- 2025.
+		\bibitem{gemv} Zhang, Y., Lu, L., Zhao, R., et al. An efficient quantized GEMV implementation for large language models inference with matrix core // Springer. -- 2025. URL: \url{https://link.springer.com/article/10.1007/s11227-025-06993-6}
 		
-		\bibitem{survey} A Comprehensive Study on Quantization Techniques for Large Language Models // IEEE Xplore. -- 2024.
+		\bibitem{survey} A Comprehensive Study on Quantization Techniques for Large Language Models // IEEE Xplore. -- 2024. URL: \url{https://ieeexplore.ieee.org/abstract/document/10899941}
 		
-		\bibitem{longcontext} Mekala, A., Atmakuru, A., Song, Y., Karpinska, M., Iyyer, M. Does quantization affect models' performance on long-context tasks? // Proceedings of EMNLP 2025. -- 2025.
+		\bibitem{longcontext} Mekala, A., Atmakuru, A., Song, Y., Karpinska, M., Iyyer, M. Does quantization affect models' performance on long-context tasks? // Proceedings of EMNLP 2025. -- 2025. URL: \url{https://aclanthology.org/2025.emnlp-main.479/}
 		
-		\bibitem{qlora} Dettmers, T., Pagnoni, A., Holtzman, A., Zettlemoyer, L. QLoRA: Efficient Finetuning of Quantized LLMs // arXiv preprint arXiv:2305.14314. -- 2023.
+		\bibitem{qlora} Dettmers, T., Pagnoni, A., Holtzman, A., Zettlemoyer, L. QLoRA: Efficient Finetuning of Quantized LLMs // arXiv preprint arXiv:2305.14314. -- 2023. URL: \url{https://arxiv.org/abs/2305.14314}
 		
-		\bibitem{champq} Guan, Y., Cui, Y., Zhao, L., et al. Mitigating the impact of activation smoothing on weights: A channel permutation and smoothing-based LLMs quantization method // Springer. -- 2026.
+		\bibitem{champq} Guan, Y., Cui, Y., Zhao, L., et al. Mitigating the impact of activation smoothing on weights: A channel permutation and smoothing-based LLMs quantization method // Springer. -- 2026. URL: \url{https://link.springer.com/article/10.1007/s44443-026-00541-9}
 		
 	\end{thebibliography}	
 \end{document}
