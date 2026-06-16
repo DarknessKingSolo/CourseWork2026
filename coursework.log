@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  15 JUN 2026 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  16 JUN 2026 19:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1061,7 +1061,7 @@ Here is how much of TeX's memory you used:
  48469 multiletter control sequences out of 15000+600000
  639143 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1308b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,1298b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\sokol\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\latt14
 40.pk> <C:\Users\sokol\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\la
 rm1000.pk> <C:\Users\sokol\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi60
@@ -1075,9 +1075,9 @@ msfonts/cm/cmr10.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/am
 sfonts/cm/cmr12.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on coursework.pdf (22 pages, 312086 bytes).
+Output written on coursework.pdf (22 pages, 311708 bytes).
 PDF statistics:
- 735 PDF objects out of 1000 (max. 8388607)
+ 734 PDF objects out of 1000 (max. 8388607)
  62 named destinations out of 1000 (max. 500000)
  6281 words of extra memory for PDF output out of 10000 (max. 10000000)
 
