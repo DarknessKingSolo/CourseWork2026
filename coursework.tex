@@ -185,11 +185,11 @@
 	
 	Сравнительный анализ методов квантования на моделях различного масштаба выявляет устойчивые закономерности. Относительная деградация качества при квантовании уменьшается с увеличением размера модели. Модель LLaMA-65B демонстрирует увеличение перплексии всего на 2\% при 4-битном квантовании методом GPTQ, в то время как для модели LLaMA-7B аналогичное увеличение составляет около 4\%. Это подтверждает, что более крупные модели обладают большей избыточностью, позволяющей компенсировать ошибки квантования.
 	
-	В таблице 1 приведено сравнение перплексии различных методов квантования на корпусе WikiText-2. Данные показывают, что увеличение размера модели снижает деградацию перплексии при квантовании.
-	
 	\begin{table}[!ht]
 		\centering
 		\small
+		\caption{Сравнение перплексии методов квантования на WikiText-2}
+		\label{tab:perplexity}
 		\begin{tabular}{|l|c|c|c|c|c|}
 			\hline
 			Модель & FP16 & INT8 послойн. & INT8 поканальн. & INT4 GPTQ & NF4 \\
@@ -203,17 +203,15 @@
 			LLaMA-65B & 3.53 & 3.54 & 3.54 & 3.60 & 3.61 \\
 			\hline
 		\end{tabular}
-		\caption{Сравнение перплексии методов квантования на WikiText-2}
-		\label{tab:perplexity}
 	\end{table}
 	
 	Из таблицы 1 следует, что для моделей с 30 миллиардами параметров и более даже 4-битное квантование даёт приемлемый рост перплексии (менее 2\%).
 	
-	Аналогичная закономерность наблюдается для точности на бенчмарке MMLU, представленной в таблице 2.
-	
 	\begin{table}[!ht]
 		\centering
 		\small
+		\caption{Точность методов квантования на бенчмарке MMLU (\%)}
+		\label{tab:mmlu}
 		\begin{tabular}{|l|c|c|c|c|c|}
 			\hline
 			Модель & FP16 & INT8 послойн. & INT8 поканальн. & INT4 GPTQ & NF4 \\
@@ -227,8 +225,6 @@
 			LLaMA-65B & 63.4 & 63.3 & 63.4 & 63.1 & 63.0 \\
 			\hline
 		\end{tabular}
-		\caption{Точность методов квантования на бенчмарке MMLU (\%)}
-		\label{tab:mmlu}
 	\end{table}
 	
 	Данные таблицы 2 показывают, что INT8 сохраняет более 99\% исходной точности, а INT4 GPTQ около 98\% для крупных моделей.
@@ -245,11 +241,11 @@
 	
 	Качественный анализ генерируемого текста оценивается через человеческую экспертизу и автоматические метрики когерентности. Человеческие оценщики ранжируют качество генерации по шкале от 1 до 5 по критериям грамматической правильности, семантической когерентности, релевантности контексту и общего качества. Для модели LLaMA-13B в формате FP16 средний балл составляет 4.23. INT8 квантованная версия получает средний балл 4.18, демонстрируя незначительную деградацию, неразличимую в большинстве случаев. INT4 GPTQ версия оценивается на 4.02 балла, показывая заметное, но умеренное снижение качества. NF4 квантованная модель получает средний балл 3.98, незначительно уступая GPTQ.
 	
-	В таблице 3 приведены интегральные метрики качества генерации для модели LLaMA-13B.
-	
 	\begin{table}[!ht]
 		\centering
 		\small
+		\caption{Метрики качества генерации для LLaMA-13B}
+		\label{tab:quality}
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
 			Метод & Перплексия C4 & Оценка экспертов (1-5) & Self-BLEU & Когерентность \\
@@ -263,8 +259,6 @@
 			NF4 & 6.63 & 3.98 & 0.46 & 0.82 \\
 			\hline
 		\end{tabular}
-		\caption{Метрики качества генерации для LLaMA-13B}
-		\label{tab:quality}
 	\end{table}
 	
 	Как видно из таблицы 3, NF4 незначительно уступает INT4 GPTQ по всем метрикам.
@@ -275,11 +269,11 @@
 	
 	Бенчмарк HellaSwag оценивает способность модели к здравому смыслу через задачи завершения сценариев. Модель должна выбрать наиболее правдоподобное продолжение из нескольких вариантов. LLaMA-13B FP16 достигает 76.2\% точности на HellaSwag. INT8 поканальное квантование даёт 75.9\%, сохраняя производительность почти без потерь. INT4 GPTQ показывает 74.8\%, демонстрируя умеренное снижение. NF4 квантование обеспечивает 74.5\% точности, оставаясь конкурентоспособным с GPTQ.
 	
-	В таблице 4 приведена точность различных методов квантования на задачах, требующих рассуждений.
-	
 	\begin{table}[!ht]
 		\centering
 		\small
+		\caption{Точность методов на задачах рассуждения (\%)}
+		\label{tab:reasoning}
 		\begin{tabular}{|l|l|c|c|c|c|}
 			\hline
 			Модель & Метод & GSM8K & HellaSwag & Big-Bench Hard & ARC-Challenge \\
@@ -293,23 +287,19 @@
 			LLaMA-7B & NF4 & 9.4 & 72.0 & 29.8 & 41.0 \\
 			\hline
 		\end{tabular}
-		\caption{Точность методов на задачах рассуждения (\%)}
-		\label{tab:reasoning}
 	\end{table}
 	
 	Из таблицы 4 следует, что для задач типа GSM8K INT4 квантование снижает точность на 15-20\% относительно FP16, тогда как INT8 менее чем на 5\%.
 	
 	\subsection{Выводы и рекомендации по выбору метода квантования}
 	
-	Систематизация результатов сравнительного анализа методов квантования INT8, INT4 и NF4 позволяет сформулировать практические рекомендации по выбору оптимального подхода в зависимости от специфических требований задачи, доступных вычислительных ресурсов и допустимого уровня деградации качества модели.
+	Systematization of the comparative analysis results allows formulating practical recommendations for choosing the optimal approach depending on the specific task requirements, available computing resources, and the acceptable level of model quality degradation.
 	
 	Метод INT8 с поканальным квантованием рекомендуется в качестве базового подхода для большинства практических применений больших языковых моделей. Этот метод обеспечивает двукратное сжатие модели при минимальной деградации качества, типично не превышающей 1\% по метрикам перплексии и точности на стандартных бенчмарках. Поканальный подход с индивидуальными параметрами квантования для каждого выходного канала эффективно адаптируется к вариативности масштабов активаций различных нейронов, что важно для сохранения точности глубоких трансформерных архитектур.
 	
 	Метод INT4 с оптимизацией GPTQ рекомендуется для сценариев, требующих агрессивного сжатия модели при сохранении приемлемого уровня качества. Четырёхкратное сжатие по сравнению с FP16 обеспечивает существенное снижение требований к памяти, позволяя развёртывать крупные модели на устройствах с ограниченными ресурсами. Процедура оптимизации GPTQ компенсирует ошибки квантования путём корректировки взаимосвязанных параметров, что критически важно для сохранения качества при столь низкой разрядности.
 	
 	Метод NF4 в сочетании с техникой QLoRA рекомендуется специально для сценариев дообучения и адаптации предобученных моделей к специализированным задачам. Неравномерное распределение квантовальных уровней, оптимизированное для нормального распределения весов, эффективно адаптируется к статистическим характеристикам параметров трансформерных моделей. Сочетание с низкоранговой адаптацией позволяет эффективно дообучать квантованные модели при минимальных требованиях к памяти, сохраняя адаптеры в высокой точности.
-	
-	В таблице 5 приведены сравнительные характеристики методов квантования для модели LLaMA-7B.
 	
 	\begin{table}[!ht]
 		\centering
@@ -331,11 +321,11 @@
 		\label{tab:comparative}
 	\end{table}
 	
-	В таблице 6 приведены данные о времени, необходимом для квантования каждого метода.
-	
 	\begin{table}[!ht]
 		\centering
 		\small
+		\caption{Время квантования различных методов для LLaMA-7B}
+		\label{tab:quantization_time}
 		\begin{tabular}{|l|c|}
 			\hline
 			Метод & Время квантования \\
@@ -349,19 +339,17 @@
 			NF4 & 3 минуты \\
 			\hline
 		\end{tabular}
-		\caption{Время квантования различных методов для LLaMA-7B}
-		\label{tab:quantization_time}
 	\end{table}
 	
 	Данные таблицы 5 показывают, что NF4 даёт почти то же сжатие и скорость, что и INT4 GPTQ. Из таблицы 6 видно, что NF4 квантуется за минуты, тогда как INT4 GPTQ требует около 3 часов.
 	
 	Важное уточнение по скорости NF4 и GPTQ. В таблице 5 указано, что ускорение NF4 относительно FP16 составляет 3.4x, а у INT4 GPTQ 3.5x. Разница в 0.1x находится в пределах погрешности измерений и может объясняться особенностями конкретной реализации библиотеки квантования или накладными расходами на деквантование в процессе инференса. С практической точки зрения оба метода показывают одинаковую скорость инференса (110-120 токен/с). Ключевое различие не в скорости, а во времени, необходимом для самого квантования: NF4 требует 3 минуты, тогда как INT4 GPTQ около 3 часов. Это делает NF4 предпочтительным выбором в сценариях, где время подготовки модели критично (эксперименты, прототипирование, частые дообучения).
 	
-	В таблице 7 приведены рекомендации по выбору метода квантования в зависимости от сценария применения.
-	
 	\begin{table}[!ht]
 		\centering
 		\footnotesize
+		\caption{Рекомендации по выбору метода квантования}
+		\label{tab:recommendations}
 		\begin{tabular}{|p{4.2cm}|c|p{4.2cm}|}
 			\hline
 			Сценарий & Рекомендуемый метод & Обоснование \\
@@ -377,8 +365,6 @@
 			Мобильные устройства & INT4 GPTQ & Критично мало памяти \\
 			\hline
 		\end{tabular}
-		\caption{Рекомендации по выбору метода квантования}
-		\label{tab:recommendations}
 	\end{table}
 	
 	Как следует из таблицы 7, универсального метода не существует. Выбор зависит от приоритетов задачи. INT8 остаётся универсальным выбором для большинства сценариев продакшн-развертывания, INT4 GPTQ оптимален для агрессивного сжатия крупных моделей, а NF4 с QLoRA представляет наиболее эффективное решение для задач дообучения.
@@ -403,29 +389,29 @@
 	
 	\begin{thebibliography}{99}
 		
-		\bibitem{llmint8} Dettmers, T., Lewis, M., Belkada, Y., Zettlemoyer, L. LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale [Текст] / T. Dettmers, M. Lewis, Y. Belkada, L. Zettlemoyer // arXiv preprint arXiv:2208.07339. -- 2022. -- URL: \url{https://arxiv.org/abs/2208.07339} (дата обращения: 28.04.2026).
+		\bibitem{llmint8} Dettmers, T., Lewis, M., Belkada, Y., Zettlemoyer, L. LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale [Текст] / T. Dettmers, M. Lewis, Y. Belkada, L. Zettlemoyer // arXiv preprint arXiv:2208.07339. -- 2022. -- Режим доступа: https://arxiv.org/abs/2208.07339 (дата обращения: 28.04.2026).
 		
-		\bibitem{awq} Lin, J., Tang, J., Yang, H., Li, Z., et al. AWQ: Activation-aware Weight Quantization for LLMs [Текст] / J. Lin, J. Tang, H. Yang, Z. Li et al. // arXiv preprint arXiv:2306.00978. -- 2023. -- URL: \url{https://arxiv.org/abs/2306.00978} (дата обращения: 29.04.2026).
+		\bibitem{awq} Lin, J., Tang, J., Yang, H., Li, Z., et al. AWQ: Activation-aware Weight Quantization for LLMs [Текст] / J. Lin, J. Tang, H. Yang, Z. Li et al. // arXiv preprint arXiv:2306.00978. -- 2023. -- Режим доступа: https://arxiv.org/abs/2306.00978 (дата обращения: 29.04.2026).
 		
-		\bibitem{smoothquant} Xiao, G., Lin, J., Seznec, M., et al. SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models [Текст] / G. Xiao, J. Lin, M. Seznec et al. // arXiv preprint arXiv:2211.10438. -- 2023. -- URL: \url{https://arxiv.org/abs/2211.10438} (дата обращения: 30.04.2026).
+		\bibitem{smoothquant} Xiao, G., Lin, J., Seznec, M., et al. SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models [Текст] / G. Xiao, J. Lin, M. Seznec et al. // arXiv preprint arXiv:2211.10438. -- 2023. -- Режим доступа: https://arxiv.org/abs/2211.10438 (дата обращения: 30.04.2026).
 		
-		\bibitem{nf4} Dettmers, T., Zettlemoyer, L. The case for 4-bit precision: k-bit Inference Scaling Laws [Текст] / T. Dettmers, L. Zettlemoyer // arXiv preprint arXiv:2212.09720. -- 2022. -- URL: \url{https://arxiv.org/abs/2212.09720} (дата обращения: 02.05.2026).
+		\bibitem{nf4} Dettmers, T., Zettlemoyer, L. The case for 4-bit precision: k-bit Inference Scaling Laws [Текст] / T. Dettmers, L. Zettlemoyer // arXiv preprint arXiv:2212.09720. -- 2022. -- Режим доступа: https://arxiv.org/abs/2212.09720 (дата обращения: 02.05.2026).
 		
-		\bibitem{microscaling} Sharify, S., Saxena, U., Xu, Z., et al. Post Training Quantization of Large Language Models with Microscaling Formats [Текст] / S. Sharify, U. Saxena, Z. Xu et al. // arXiv preprint arXiv:2405.07135. -- 2024. -- URL: \url{https://arxiv.org/abs/2405.07135} (дата обращения: 03.05.2026).
+		\bibitem{microscaling} Sharify, S., Saxena, U., Xu, Z., et al. Post Training Quantization of Large Language Models with Microscaling Formats [Текст] / S. Sharify, U. Saxena, Z. Xu et al. // arXiv preprint arXiv:2405.07135. -- 2024. -- Режим доступа: https://arxiv.org/abs/2405.07135 (дата обращения: 03.05.2026).
 		
-		\bibitem{gptq} Frantar, E., Ashkboos, S., Hoefler, T., Alistarh, D. GPTQ: Accurate Post-Training Quantization for Generative Pretrained Transformers [Текст] / E. Frantar, S. Ashkboos, T. Hoefler, D. Alistarh // arXiv preprint arXiv:2210.17323. -- 2022. -- URL: \url{https://arxiv.org/abs/2210.17323} (дата обращения: 05.05.2026).
+		\bibitem{gptq} Frantar, E., Ashkboos, S., Hoefler, T., Alistarh, D. GPTQ: Accurate Post-Training Quantization for Generative Pretrained Transformers [Текст] / E. Frantar, S. Ashkboos, T. Hoefler, D. Alistarh // arXiv preprint arXiv:2210.17323. -- 2022. -- Режим доступа: https://arxiv.org/abs/2210.17323 (дата обращения: 05.05.2026).
 		
-		\bibitem{sparsegpt} Frantar, E., Alistarh, D. SparseGPT: Massive Language Models Can be Accurately Pruned in One-Shot [Текст] / E. Frantar, D. Alistarh // arXiv preprint arXiv:2301.00774. -- 2023. -- URL: \url{https://arxiv.org/abs/2301.00774} (дата обращения: 06.05.2026).
+		\bibitem{sparsegpt} Frantar, E., Alistarh, D. SparseGPT: Massive Language Models Can be Accurately Pruned in One-Shot [Текст] / E. Frantar, D. Alistarh // arXiv preprint arXiv:2301.00774. -- 2023. -- Режим доступа: https://arxiv.org/abs/2301.00774 (дата обращения: 06.05.2026).
 		
-		\bibitem{gemv} Zhang, Y., Lu, L., Zhao, R., et al. An efficient quantized GEMV implementation for large language models inference with matrix core [Текст] / Y. Zhang, L. Lu, R. Zhao et al. // Springer. -- 2025. -- URL: \url{https://link.springer.com/article/10.1007/s11227-025-06993-6} (дата обращения: 07.05.2026).
+		\bibitem{gemv} Zhang, Y., Lu, L., Zhao, R., et al. An efficient quantized GEMV implementation for large language models inference with matrix core [Текст] / Y. Zhang, L. Lu, R. Zhao et al. // Springer. -- 2025. -- Режим доступа: https://link.springer.com/article/10.1007/s11227-025-06993-6 (дата обращения: 07.05.2026).
 		
-		\bibitem{survey} A Comprehensive Study on Quantization Techniques for Large Language Models [Электронный ресурс] // IEEE Xplore. -- 2024. -- URL: \url{https://ieeexplore.ieee.org/abstract/document/10899941} (дата обращения: 08.05.2026).
+		\bibitem{survey} A Comprehensive Study on Quantization Techniques for Large Language Models [Электронный ресурс] // IEEE Xplore. -- 2024. -- Режим доступа: https://ieeexplore.ieee.org/abstract/document/10899941 (дата обращения: 08.05.2026).
 		
-		\bibitem{longcontext} Mekala, A., Atmakuru, A., Song, Y., Karpinska, M., Iyyer, M. Does quantization affect models' performance on long-context tasks? [Текст] / A. Mekala, A. Atmakuru, Y. Song, M. Karpinska, M. Iyyer // Proceedings of EMNLP 2025. -- 2025. -- URL: \url{https://aclanthology.org/2025.emnlp-main.479/} (дата обращения: 10.05.2026).
+		\bibitem{longcontext} Mekala, A., Atmakuru, A., Song, Y., Karpinska, M., Iyyer, M. Does quantization affect models' performance on long-context tasks? [Текст] / A. Mekala, A. Atmakuru, Y. Song, M. Karpinska, M. Iyyer // Proceedings of EMNLP 2025. -- 2025. -- Режим доступа: https://aclanthology.org/2025.emnlp-main.479/ (дата обращения: 10.05.2026).
 		
-		\bibitem{qlora} Dettmers, T., Pagnoni, A., Holtzman, A., Zettlemoyer, L. QLoRA: Efficient Finetuning of Quantized LLMs [Текст] / T. Dettmers, A. Pagnoni, A. Holtzman, L. Zettlemoyer // arXiv preprint arXiv:2305.14314. -- 2023. -- URL: \url{https://arxiv.org/abs/2305.14314} (дата обращения: 12.05.2026).
+		\bibitem{qlora} Dettmers, T., Pagnoni, A., Holtzman, A., Zettlemoyer, L. QLoRA: Efficient Finetuning of Quantized LLMs [Текст] / T. Dettmers, A. Pagnoni, A. Holtzman, L. Zettlemoyer // arXiv preprint arXiv:2305.14314. -- 2023. -- Режим доступа: https://arxiv.org/abs/2305.14314 (дата обращения: 12.05.2026).
 		
-		\bibitem{champq} Guan, Y., Cui, Y., Zhao, L., et al. Mitigating the impact of activation smoothing on weights: A channel permutation and smoothing-based LLMs quantization method [Текст] / Y. Guan, Y. Cui, L. Zhao et al. // Springer. -- 2026. -- URL: \url{https://link.springer.com/article/10.1007/s44443-026-00541-9} (дата обращения: 14.05.2026).
+		\bibitem{champq} Guan, Y., Cui, Y., Zhao, L., et al. Mitigating the impact of activation smoothing on weights: A channel permutation and smoothing-based LLMs quantization method [Текст] / Y. Guan, Y. Cui, L. Zhao et al. // Springer. -- 2026. -- Режим доступа: https://link.springer.com/article/10.1007/s44443-026-00541-9 (дата обращения: 14.05.2026).
 		
 	\end{thebibliography}	
 \end{document}

@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {2.4}Сравнительный анализ методов на моделях разного масштаба}{12}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Анализ влияния низкой разрядности на качество генерации}{13}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Влияние квантования на способность к рассуждениям}{15}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Выводы и рекомендации по выбору метода квантования}{16}{subsection.2.7}%
-\contentsline {section}{\cyrillictext \CYRZ \CYRA \CYRK \CYRL \CYRYU \CYRCH \CYRE \CYRN \CYRI \CYRE }{19}{section*.13}%
-\contentsline {section}{\cyrillictext \CYRS \CYRP \CYRI \CYRS \CYRO \CYRK \ \CYRI \CYRS \CYRP \CYRO \CYRL \CYRSFTSN \CYRZ \CYRO \CYRV \CYRA \CYRN \CYRN \CYRERY \CYRH \ \CYRI \CYRS \CYRT \CYRO \CYRCH \CYRN \CYRI \CYRK \CYRO \CYRV }{21}{section*.14}%
+\contentsline {subsection}{\numberline {2.7}Выводы и рекомендации по выбору метода квантования}{15}{subsection.2.7}%
+\contentsline {section}{\cyrillictext \CYRZ \CYRA \CYRK \CYRL \CYRYU \CYRCH \CYRE \CYRN \CYRI \CYRE }{18}{section*.13}%
+\contentsline {section}{\cyrillictext \CYRS \CYRP \CYRI \CYRS \CYRO \CYRK \ \CYRI \CYRS \CYRP \CYRO \CYRL \CYRSFTSN \CYRZ \CYRO \CYRV \CYRA \CYRN \CYRN \CYRERY \CYRH \ \CYRI \CYRS \CYRT \CYRO \CYRCH \CYRN \CYRI \CYRK \CYRO \CYRV }{20}{section*.14}%
 \contentsfinish 
