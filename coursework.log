@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  16 JUN 2026 19:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.12)  18 JUN 2026 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -977,11 +977,6 @@ Overfull \hbox (9.40419pt too wide) in paragraph at lines 253--266
  []
 
 [15] [16]
-Overfull \hbox (107.44553pt too wide) in paragraph at lines 317--330
- [][] 
- []
-
-
 Underfull \hbox (badness 1661) in paragraph at lines 371--371
 []|\T2A/cmr/m/n/10 Ограниченное обо-ру-до-ва-
  []
@@ -1075,7 +1070,7 @@ msfonts/cm/cmr10.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/am
 sfonts/cm/cmr12.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb><C:/Users/sokol/OneDrive/Desktop/mik/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on coursework.pdf (22 pages, 311708 bytes).
+Output written on coursework.pdf (22 pages, 311699 bytes).
 PDF statistics:
  734 PDF objects out of 1000 (max. 8388607)
  62 named destinations out of 1000 (max. 500000)
